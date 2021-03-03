@@ -89,18 +89,12 @@ public:
 
 	void process(Figure* figure, Event event)
 	{
+		process_figure(figure, event);
 		if (event.type == Event::Closed) { get_window().close(); }
 		if (event.type == sf::Event::KeyPressed) {
 			switch (event.key.code) {
 			case sf::Keyboard::Escape: { get_window().close(); break; }
 			case sf::Keyboard::BackSpace: { mode = false; break; }
-			case sf::Keyboard::Left: { move_left(figure); break; }
-			case sf::Keyboard::Right: { move_right(figure); break; }
-			case sf::Keyboard::Up: { move_up(figure); break; }
-			case sf::Keyboard::Down: { move_down(figure); break; }
-			case sf::Keyboard::Q: { change_color(figure); break; }
-			case sf::Keyboard::W: { deformate(figure); break; }
-			case sf::Keyboard::E: { set_default(figure); break; }
 			case sf::Keyboard::R: { auto_mode(figure); break; }
 			case sf::Keyboard::T: { change_trace(); break; }
 			case sf::Keyboard::Tab: { change_pointer(); break; }
@@ -110,9 +104,41 @@ public:
 			case sf::Keyboard::F3: { add_square((Composite*)figure); break; }
 			case sf::Keyboard::F4: { add_triangle((Composite*)figure); break; }
 			case sf::Keyboard::F5: { composite_formation(); break; }
+			case sf::Keyboard::F6: { composite_from_existing_figures(); break; }
 			case sf::Keyboard::D: { demonstrate_deformation(); break; }
+			case sf::Keyboard::F7: { clone_figure(figure); break; }
+			case sf::Keyboard::F8: { save_in_file(figure); break; }
+			case sf::Keyboard::F9: { load_from_file(); break; }
 			}
 		}
+	}
+
+	void process_figure(Figure* figure, Event event)
+	{
+		if (event.type == Event::Closed) { get_window().close(); }
+		if (event.type == sf::Event::KeyPressed) {
+			switch (event.key.code) {
+			case sf::Keyboard::Left: { move_left(figure); break; }
+			case sf::Keyboard::Right: { move_right(figure); break; }
+			case sf::Keyboard::Up: { move_up(figure); break; }
+			case sf::Keyboard::Down: { move_down(figure); break; }
+			case sf::Keyboard::Q: { change_color(figure); break; }
+			case sf::Keyboard::W: { deformate(figure); break; }
+			case sf::Keyboard::E: { set_default(figure); break; }
+			}
+		}
+	}
+
+	void save_in_file(Figure* figure) {
+		if (figure != nullptr) {
+			FigureUtils f;
+			f.save_state(*(figure->clone()));
+		}
+	}
+
+	void load_from_file() {
+		FigureUtils f;
+		figures.push_back((f.load_state())->clone());
 	}
 
 	void demonstrate_deformation() 
@@ -144,6 +170,44 @@ public:
 			window->clear();
 			anchor->draw(window);
 			rectangle->draw(window);
+			display();
+		}
+	}
+
+	void clone_figure(Figure* figure) {
+		if (figure != nullptr) {
+			figures.push_back(figure->clone());
+		}
+	}
+
+	void composite_from_existing_figures() {
+		mode = true;
+		int pointer = 0;
+		Composite* composite = new Composite();
+		Figure* shape = figures[pointer];
+
+		while (window->isOpen())
+		{
+			Event event;
+			while (window->pollEvent(event))
+			{
+				if (event.type == Event::KeyPressed)
+				{
+					process_figure(shape, event);
+					if (Keyboard::isKeyPressed(Keyboard::BackSpace)) { mode = false; return; }
+					if (Keyboard::isKeyPressed(Keyboard::Tab)) {
+						if (pointer < figures.size() - 1) {
+							shape = figures[++pointer];
+						}
+						else {
+							shape = figures[0];
+						}
+					}
+					if (Keyboard::isKeyPressed(Keyboard::C)) { save_to_composite(shape->clone(), composite); figures.erase(figures.begin() + pointer); }
+					if (Keyboard::isKeyPressed(Keyboard::S)) { save_figure(composite); }
+				}
+			}
+			draw(shape);
 			display();
 		}
 	}
