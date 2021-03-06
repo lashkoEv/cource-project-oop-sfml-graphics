@@ -13,21 +13,10 @@ class Memento
 
 public:
 
-	void set_type(string s) {
-		type = s;
-	}
-
-	string get_type() {
-		return type;
-	}
-
-	void set_figure(Figure* f) {
-		figure = f;
-	}
-
-	Figure* get_figure() {
-		return figure;
-	}
+	void set_type(string s);
+	string get_type();
+	void set_figure(Figure* f);
+	Figure* get_figure();
 };
 
 
