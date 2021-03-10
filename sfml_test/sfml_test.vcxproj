@@ -142,6 +142,7 @@
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Composite.cpp" />
     <ClCompile Include="FigureUtils.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Memento.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Scene.cpp" />
@@ -158,7 +159,9 @@
     <ClInclude Include="Composite.h" />
     <ClInclude Include="Drawn.h" />
     <ClInclude Include="Figure.h" />
+    <ClInclude Include="FigureType.h" />
     <ClInclude Include="FigureUtils.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Memento.h" />
     <ClInclude Include="Movable.h" />
     <ClInclude Include="Rectangle.h" />

@@ -27,19 +27,19 @@ Figure* FigureUtils::load_state()
         cout << "File opened!";
         fin.read((char*)&memento, sizeof(Memento));
         Figure* figure = nullptr;
-        if (memento.get_type() == "circle") {
+        if (memento.get_type() == CIRCLE) {
             figure = new Circle();
         }
-        if (memento.get_type() == "composite") {
+        if (memento.get_type() == COMPOSITE) {
             figure = new Composite();
         }
-        if (memento.get_type() == "rectangle") {
+        if (memento.get_type() == RECTANGLE) {
             figure = new Rectangle();
         }
-        if (memento.get_type() == "square") {
+        if (memento.get_type() == SQUARE) {
             figure = new Square();
         }
-        if (memento.get_type() == "triangle") {
+        if (memento.get_type() == TRIANGLE) {
             figure = new Triangle();
         }
         figure->get_memento(memento);

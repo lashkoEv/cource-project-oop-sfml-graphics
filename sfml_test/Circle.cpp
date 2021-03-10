@@ -7,7 +7,7 @@ Circle::Circle(float r, Color color, int move_x = 0, int move_y = 0)
     circle = new CircleShape(default_radius);
     circle->setFillColor(default_color);
     circle->setPosition(move_x, move_y);
-    type = "circle";
+    type = CIRCLE;
 }
 
 Circle::Circle() {
@@ -16,7 +16,7 @@ Circle::Circle() {
     circle = new CircleShape(default_radius);
     circle->setFillColor(default_color);
     circle->setPosition(0, 0);
-    type = "circle";
+    type = CIRCLE;
 }
 
 Circle::~Circle()
@@ -71,7 +71,7 @@ void Circle::set_default()
 
 FloatRect Circle::get_global_bounds() 
 {
-    return circle->getGlobalBounds();
+    return circle->getLocalBounds();
 }
 
 Figure* Circle::clone() 
@@ -91,7 +91,7 @@ void Circle::get_memento(Memento& memento)
     circle = new_circle->circle;
 }
 
-string Circle::get_type() 
+FigureType Circle::get_type()
 {
     return type;
 }

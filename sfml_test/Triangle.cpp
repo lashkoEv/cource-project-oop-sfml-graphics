@@ -6,7 +6,7 @@ Triangle::Triangle(float height, Color color, int move_x = 0, int move_y = 0) {
     triangle = new CircleShape(default_height, 3);
     triangle->setFillColor(default_color);
     triangle->setPosition(move_x, move_y);
-    type = "triangle";
+    type = TRIANGLE;
     
 }
 
@@ -16,6 +16,7 @@ Triangle::Triangle() {
     triangle = new CircleShape(default_height, 3);
     triangle->setFillColor(default_color);
     triangle->setPosition(0, 0);
+    type = TRIANGLE;
 }
 
 Triangle::~Triangle() {
@@ -89,7 +90,7 @@ void Triangle::get_memento(Memento& memento)
     triangle = new_triangle->triangle;
 }
 
-string Triangle::get_type() 
+FigureType Triangle::get_type()
 {
     return type;
 }

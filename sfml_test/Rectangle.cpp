@@ -6,7 +6,7 @@ Rectangle::Rectangle(float x, float y, Color color, int move_x = 0, int move_y =
     rectangle = new RectangleShape(Vector2f(x, y));
     rectangle->setFillColor(color);
     rectangle->setPosition(move_x, move_y);
-    type = "rectangle";
+    type = RECTANGLE;
 }
 
 Rectangle::Rectangle() {
@@ -15,7 +15,7 @@ Rectangle::Rectangle() {
     rectangle = new RectangleShape(default_size);
     rectangle->setFillColor(default_color);
     rectangle->setPosition(0, 0);
-    type = "rectangle";
+    type = RECTANGLE;
 }
 
 Rectangle::~Rectangle() {
@@ -91,7 +91,7 @@ void Rectangle::get_memento(Memento& memento)
     rectangle = new_rectangle->rectangle;
 }
 
-string Rectangle::get_type() 
+FigureType Rectangle::get_type()
 {
     return type;
 }

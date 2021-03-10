@@ -111,7 +111,7 @@ void Scene::load_from_file() {
 void Scene::demonstrate_deformation()
 {
 	mode = true;
-	Square* anchor = new Square(300, Color::Color(204, 174, 238), CURRENT_WINDOW.x / 2 - 200, CURRENT_WINDOW.y / 2 - 200);
+	Circle* anchor = new Circle(100, Color::Color(204, 174, 238), CURRENT_WINDOW.x / 2 - 200, CURRENT_WINDOW.y / 2 - 200);
 	Rectangle* rectangle = new Rectangle();
 	bool is_deformate = false;
 	bool check_position = false;
@@ -169,8 +169,11 @@ void Scene::composite_from_existing_figures() {
 						shape = figures[iterator];
 					}
 				}
-				if (Keyboard::isKeyPressed(Keyboard::C)) { save_to_composite(shape->clone(), composite); figures.erase(figures.begin() + iterator); }
-				if (Keyboard::isKeyPressed(Keyboard::S)) { save_figure(composite); }
+				if (Keyboard::isKeyPressed(Keyboard::C)) {
+					save_to_composite(shape->clone(), composite);
+					figures.erase(figures.begin() + iterator);
+				}
+				if (Keyboard::isKeyPressed(Keyboard::S)) { save_figure(composite->clone()); }
 			}
 		}
 		draw(shape);
@@ -328,7 +331,7 @@ void Scene::draw(Figure* figure)
 	if (!is_trace) {
 		window->clear();
 	}
-	figure->draw(&get_window());
+	figure->draw(window);
 }
 
 void Scene::draw()

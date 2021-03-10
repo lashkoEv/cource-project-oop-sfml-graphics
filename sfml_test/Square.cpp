@@ -6,7 +6,7 @@ Square::Square(float side, Color color, int move_x = 0, int move_y = 0) {
     square = new RectangleShape(default_size);
     square->setFillColor(default_color);
     square->setPosition(move_x, move_y);
-    type = "square";
+    type = SQUARE;
 }
 
 Square::Square() {
@@ -15,7 +15,7 @@ Square::Square() {
     square = new RectangleShape(default_size);
     square->setFillColor(default_color);
     square->setPosition(0, 0);
-    type = "square";
+    type = SQUARE;
 }
 
 Square::~Square() {
@@ -91,7 +91,7 @@ void Square::get_memento(Memento& memento)
     square = new_square->square;
 }
 
-string Square::get_type() 
+FigureType Square::get_type()
 {
     return type;
 }
