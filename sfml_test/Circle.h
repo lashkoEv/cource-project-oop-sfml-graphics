@@ -24,6 +24,6 @@ public:
     Figure* clone() override;
     void set_memento(Memento& memento) override;
     void get_memento(Memento& memento) override;
-    string get_type() override; 
+    FigureType get_type() override;
 };
 

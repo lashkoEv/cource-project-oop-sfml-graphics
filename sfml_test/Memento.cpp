@@ -1,10 +1,10 @@
 #include "Memento.h"
 
-void Memento::set_type(string s) {
+void Memento::set_type(FigureType s) {
 	type = s;
 }
 
-string Memento::get_type() {
+FigureType Memento::get_type() {
 	return type;
 }
 

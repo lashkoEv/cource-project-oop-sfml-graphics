@@ -1,5 +1,6 @@
 #pragma once
 #include "Figure.h"
+#include "FigureType.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 using namespace std;
@@ -8,13 +9,13 @@ class Figure;
 class Memento
 {
 	friend class Figure;
-	string type;
+	FigureType type;
 	Figure* figure;
 
 public:
 
-	void set_type(string s);
-	string get_type();
+	void set_type(FigureType s);
+	FigureType get_type();
 	void set_figure(Figure* f);
 	Figure* get_figure();
 };

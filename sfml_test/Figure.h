@@ -2,13 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Memento.h"
+#include "FigureType.h"
 using namespace sf;
 using namespace std;
 class Memento;
 class Figure 
 {
 protected:
-	string type;
+	FigureType type;
 public:
 	virtual void draw(RenderWindow *window) = 0;
 	virtual void set_color(Color color) = 0;
@@ -22,7 +23,7 @@ public:
 	virtual Figure* clone() = 0;
 	virtual void set_memento(Memento& memento) = 0;
 	virtual void get_memento(Memento& memento) = 0;
-	virtual string get_type() = 0;
+	virtual FigureType get_type() = 0;
 };
 
 

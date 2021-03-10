@@ -2,7 +2,7 @@
 
 Composite::Composite()
 {
-    type = "composite";
+    type = COMPOSITE;
 }
 
 Composite::Composite(Composite* tmp)
@@ -11,7 +11,7 @@ Composite::Composite(Composite* tmp)
     {
         figures.push_back(temp->clone());
     }
-    type = "composite";
+    type = COMPOSITE;
 }
 
 Composite::~Composite()
@@ -28,7 +28,7 @@ void Composite::draw(RenderWindow* window)
 void Composite::add(Figure* figure)
 {
     figures.push_back(figure);
-    cout << "add " << figure->get_type() << " to composite" << endl;
+    cout << "add " << ToString(figure->get_type()) << " to composite" << endl;
 }
 
 void Composite::set_color(Color color) 
@@ -103,7 +103,7 @@ void Composite::get_memento(Memento& memento)
     figures = new_composite->figures;
 }
 
-string Composite::get_type()
+FigureType Composite::get_type()
 {
     return type;
 }

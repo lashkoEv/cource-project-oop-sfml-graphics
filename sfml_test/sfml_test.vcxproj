@@ -158,6 +158,7 @@
     <ClInclude Include="Composite.h" />
     <ClInclude Include="Drawn.h" />
     <ClInclude Include="Figure.h" />
+    <ClInclude Include="FigureType.h" />
     <ClInclude Include="FigureUtils.h" />
     <ClInclude Include="Memento.h" />
     <ClInclude Include="Movable.h" />
