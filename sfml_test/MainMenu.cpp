@@ -138,3 +138,4 @@ std::wstring MainMenu::get_help_string()
 	help.append(L"\nF9 - завантажити фігуру із файлу");
 	return help;
 }
+
