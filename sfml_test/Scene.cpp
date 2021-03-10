@@ -365,4 +365,3 @@ void Scene::auto_mode(Figure* figure)
 		}
 	}
 }
-

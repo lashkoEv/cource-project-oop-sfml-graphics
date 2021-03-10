@@ -16,4 +16,3 @@ Figure* Memento::get_figure() {
 	return figure;
 }
 
-

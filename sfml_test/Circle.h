@@ -27,3 +27,4 @@ public:
     FigureType get_type() override;
 };
 
+

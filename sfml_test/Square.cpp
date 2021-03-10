@@ -96,3 +96,4 @@ FigureType Square::get_type()
     return type;
 }
 
+

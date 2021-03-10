@@ -95,3 +95,4 @@ FigureType Rectangle::get_type()
 {
     return type;
 }
+

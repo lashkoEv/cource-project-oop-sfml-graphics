@@ -63,3 +63,4 @@ public:
 	void draw() override;
 	void auto_mode(Figure* figure);
 };
+

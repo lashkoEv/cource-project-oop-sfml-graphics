@@ -19,5 +19,3 @@ public:
 	void set_figure(Figure* f);
 	Figure* get_figure();
 };
-
-
