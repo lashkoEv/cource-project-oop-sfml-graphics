@@ -26,7 +26,7 @@ void MainMenu::show_menu() {
 		int current_item = 0;
 		init_unselect();
 		check_select_item(current_item);
-		is_opened = prodess_item(current_item);
+		is_opened = process_item(current_item);
 		for (int i = 0; i < ITEM_COUNT; i++)
 		{
 			main_window->draw(menu_item[i]);
@@ -35,7 +35,7 @@ void MainMenu::show_menu() {
 	}
 }
 
-bool MainMenu::prodess_item(int current_item) {
+bool MainMenu::process_item(int current_item) {
 	if (Mouse::isButtonPressed(Mouse::Left))
 	{
 		switch (current_item) {
@@ -71,6 +71,7 @@ void MainMenu::check_select_item(int& current_item) {
 		current_item = 3;
 	}
 }
+
 void MainMenu::init_unselect() {
 	for (int i = 0; i < ITEM_COUNT; i++)
 	{

@@ -9,7 +9,7 @@ class MainMenu
 	Texture menu_item_texture[ITEM_COUNT];
 	Sprite menu_item[ITEM_COUNT];
 
-	bool prodess_item(int current_item);
+	bool process_item(int current_item);
 	void check_select_item(int& current_item);
 	void init_unselect();
 	void run_program();

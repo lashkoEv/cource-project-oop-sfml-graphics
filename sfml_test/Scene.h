@@ -40,7 +40,7 @@ public:
 	void process_figure(Figure* figure, Event event);
 	void save_to_file(Figure* figure);
 	void load_from_file();
-	void demonstrate_deformation();
+	void demonstrate_deformation(Figure* figure);
 	void clone_figure(Figure* figure);
 	void composite_from_existing_figures();
 	void save_to_composite(Figure* figure, Composite* composite);
@@ -49,6 +49,8 @@ public:
 	void add_figure(Composite* composite, Keyboard::Key key);
 	void save_figure(Figure* figure);
 	void change_pointer();
+	void auto_mode(Figure* figure);
+	RenderWindow& get_window();
 	void change_trace() override;
 	void move_left(Figure* figure) override;
 	void move_right(Figure* figure) override;
@@ -58,9 +60,7 @@ public:
 	void deformate(Figure* figure) override;
 	void set_default(Figure* figure) override;
 	void display() override;
-	RenderWindow& get_window();
 	void draw(Figure* figure) override;
 	void draw() override;
-	void auto_mode(Figure* figure);
 };
 

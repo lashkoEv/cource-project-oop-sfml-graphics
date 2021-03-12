@@ -71,7 +71,7 @@ void Scene::process_global(Figure* figure, Event event)
 		case sf::Keyboard::S: { save_figure(figure); break; }
 		case sf::Keyboard::F5: { composite_formation(); break; }
 		case sf::Keyboard::F6: { composite_from_existing_figures(); break; }
-		case sf::Keyboard::D: { demonstrate_deformation(); break; }
+		case sf::Keyboard::D: { demonstrate_deformation(figure); break; }
 		case sf::Keyboard::F7: { clone_figure(figure); break; }
 		case sf::Keyboard::F8: { save_to_file(figure); break; }
 		case sf::Keyboard::F9: { load_from_file(); break; }
@@ -108,11 +108,10 @@ void Scene::load_from_file() {
 	figures.push_back((f.load_state())->clone());
 }
 
-void Scene::demonstrate_deformation()
+void Scene::demonstrate_deformation(Figure* figure)
 {
 	mode = true;
-	Circle* anchor = new Circle(100, Color::Color(204, 174, 238), CURRENT_WINDOW.x / 2 - 200, CURRENT_WINDOW.y / 2 - 200);
-	Rectangle* rectangle = new Rectangle();
+	Square* anchor = new Square(100, Color::Color(204, 174, 238), CURRENT_WINDOW.x / 2 - 200, CURRENT_WINDOW.y / 2 - 200);
 	bool is_deformate = false;
 	bool check_position = false;
 	while (window->isOpen())
@@ -120,10 +119,10 @@ void Scene::demonstrate_deformation()
 		Event event;
 		while (window->pollEvent(event))
 		{
-			process_global(rectangle, event);
-			if (anchor->get_global_bounds().intersects(rectangle->get_global_bounds())) {
+			process_global(figure, event);
+			if (anchor->get_global_bounds().intersects(figure->get_global_bounds())) {
 				if (!is_deformate) {
-					rectangle->deformation();
+					figure->deformation();
 					is_deformate = true;
 				}
 			}
@@ -134,7 +133,7 @@ void Scene::demonstrate_deformation()
 		}
 		window->clear();
 		anchor->draw(window);
-		rectangle->draw(window);
+		figure->draw(window);
 		display();
 	}
 }
