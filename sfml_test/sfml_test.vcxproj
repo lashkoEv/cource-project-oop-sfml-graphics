@@ -139,19 +139,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="Composite.cpp" />
     <ClCompile Include="FigureUtils.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Memento.cpp" />
-    <ClCompile Include="sfml_test.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Square.cpp" />
+    <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Changable.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Composite.h" />
+    <ClInclude Include="Drawn.h" />
     <ClInclude Include="Figure.h" />
+    <ClInclude Include="FigureType.h" />
     <ClInclude Include="FigureUtils.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Memento.h" />
+    <ClInclude Include="Movable.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Square.h" />
